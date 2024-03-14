@@ -30,7 +30,7 @@ export const islandInfo:IInfo[] = [{
 
 
 
-export function getNearest2Times(currentIsland,currentPower){
+export function getNearest2Times(currentIsland:number,currentPower:number){
     const currentPowerLevels = islandInfo[currentIsland].data;
     // 找小于currentPower的 2个数据
     let index = currentPowerLevels.findIndex(one=>one>currentPower);
@@ -44,7 +44,7 @@ export function getNearest2Times(currentIsland,currentPower){
     }else{
         currentIndexes = [index-2, index-1];
     }
-    const results=[];
+    const results=[] as any[];
     currentIndexes.map(ind=>{
         // 最终计算是使用的不带小数的百分位。
         const percent = Math.ceil(currentPowerLevels[ind]/currentPower*100);
@@ -63,7 +63,7 @@ export function getNearest2Times(currentIsland,currentPower){
 }
 
 
-function getEndTime (endMinute){
+function getEndTime (endMinute:number){
     const now = new Date();
     const endTime = new Date( now.getTime() + endMinute * 60 * 1000)
 

@@ -49,7 +49,7 @@ export default function Home() {
         </Row>
         <Row align={'middle'}>
             <Col span={6}>能量</Col>
-            <Col span={6}><Input type={'number'} value={currentPower} onChange={v=>setCurrentPower(v.target.value)}/></Col>
+            <Col span={6}><Input type={'number'} value={currentPower} onChange={v=>setCurrentPower(+v.target.value)}/></Col>
         </Row>
         <Row>
             当前能量等级：{islandInfo[currentIsland].data.map(one=><Tag key={one}>{one}</Tag>)}
