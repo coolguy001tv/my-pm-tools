@@ -2,7 +2,7 @@
 
 import styles from './page.module.css'
 import { islandInfo, getNearest2Times} from '../components/island/common'
-import {Input, Row, Col, Select, Tag,} from "antd";
+import {Input, Row, Col, Select, Tag,InputNumber} from "antd";
 import {useEffect, useState} from "react";
 
 
@@ -16,7 +16,7 @@ const islandOptions = islandInfo.map((info,index)=>({
 
 export default function Home() {
     const [currentIsland, setCurrentIsland] = useState(0);
-    const [currentPower , setCurrentPower] = useState(0);
+    const [currentPower , setCurrentPower] = useState<number | null>(0);
     const [result, setResult] = useState([] as string[])
     useEffect(()=>{
         if(localStorage['currentIsland']){
@@ -49,7 +49,7 @@ export default function Home() {
         </Row>
         <Row align={'middle'}>
             <Col span={6}>能量</Col>
-            <Col span={6}><Input type={'number'} value={currentPower} onChange={v=>setCurrentPower(+v.target.value)}/></Col>
+            <Col span={6}><InputNumber<number> value={currentPower} onChange={v=>setCurrentPower(v)}/></Col>
         </Row>
         <Row>
             当前能量等级：{islandInfo[currentIsland].data.map(one=><Tag key={one}>{one}</Tag>)}
